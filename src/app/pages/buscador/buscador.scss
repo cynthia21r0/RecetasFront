@@ -1,0 +1,261 @@
+/* HERO BANNER AJUSTADO (Sin fondo propio porque la app ya es rosa) */
+.hero-search {
+  padding: 30px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+  /* Eliminamos el background y el shadow para que se funda con el fondo principal */
+}
+
+.hero-search h2 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.hero-search p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+/* BARRA DE BÚSQUEDA REDONDEADA Y ELEGANTE */
+.search-box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  flex: 1;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  border-radius: 50px 0 0 50px;
+  background: transparent;
+}
+
+.search-box button {
+  padding: 15px 30px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.search-box button:hover {
+  background: #c0392b;
+  transform: scale(1.02);
+}
+
+/* CONSEJO DEL CHEF ESTILIZADO */
+.consejo {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-left: 5px solid #f1c40f;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.consejo-icon {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+
+.consejo-text p {
+  margin: 5px 0 0 0;
+  color: #555;
+}
+
+/* TARJETAS DE RECETAS (CARDS) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.img-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.btn-ver {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-ver:hover {
+  background: #2980b9;
+}
+
+/* SIN RESULTADOS */
+.sin-resultados {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+/* MODAL (VENTANA EMERGENTE) MEJORADO */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 650px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cerrar-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #95a5a6;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-cerrar-icon:hover {
+  color: #e74c3c;
+}
+
+.modal-content h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  padding-right: 30px;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+}
+
+.instrucciones {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: #444;
+  font-size: 1.05rem;
+}
+
+.btn-cerrar {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 25px;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-cerrar:hover {
+  background: #c0392b;
+}
+
+/* ANIMACIONES */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

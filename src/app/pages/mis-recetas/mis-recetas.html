@@ -1,0 +1,29 @@
+<div class="page-header fade-in">
+  <div class="header-text">
+    <h2>Mis Recetas Guardadas 📖</h2>
+    <p>Tu colección personal de creaciones culinarias</p>
+  </div>
+  <button routerLink="/crear" class="btn-primary">+ Nueva Receta</button>
+</div>
+
+<div *ngIf="recetas.length === 0" class="empty-state fade-in">
+  <div class="empty-icon">🍳</div>
+  <h3>El recetario está vacío</h3>
+  <p>Anímate a guardar tu primer platillo o descubre ideas nuevas en el buscador mundial.</p>
+  <button routerLink="/crear" class="btn-outline">Crear mi primera receta</button>
+</div>
+
+<div class="grid" *ngIf="recetas.length > 0">
+  <div class="card fade-in" *ngFor="let r of recetas">
+    <div class="card-header">
+      <h3>{{ r.nombre }}</h3>
+    </div>
+    <div class="card-body">
+      <p class="desc">{{ r.descripcion }}</p>
+    </div>
+    <div class="card-footer">
+      <button [routerLink]="['/editar', r.id]" class="btn-edit">✏️ Editar</button>
+      <button (click)="borrar(r.id!)" class="btn-delete">🗑️ Borrar</button>
+    </div>
+  </div>
+</div>

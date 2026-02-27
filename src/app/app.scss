@@ -1,0 +1,14 @@
+:host {
+      display: block;
+      min-height: 100vh;
+      /* AQUÍ ESTÁ EL NUEVO FONDO ROSA PARA TODA LA APP */
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .container {
+      padding: 20px 40px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+    }

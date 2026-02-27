@@ -1,0 +1,53 @@
+<div class="hero-search">
+  <h2>Descubre Recetas del Mundo 🌎</h2>
+  <p>Busca ingredientes en inglés y encuentra tu próxima comida favorita</p>
+
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="ingrediente"
+      (keyup.enter)="buscar()"
+      placeholder="Ej. chicken, avocado, beef..."
+    />
+    <button (click)="buscar()">🔍 Buscar</button>
+  </div>
+</div>
+
+<div *ngIf="consejo" class="consejo fade-in">
+  <div class="consejo-icon">💡</div>
+  <div class="consejo-text">
+    <strong>Consejo del Chef:</strong>
+    <p>{{ consejo }}</p>
+  </div>
+</div>
+
+<div class="grid" *ngIf="recetas.length > 0">
+  <div class="card fade-in" *ngFor="let receta of recetas">
+    <div class="img-container">
+      <img [src]="receta.strMealThumb" [alt]="receta.strMeal" />
+    </div>
+    <div class="card-content">
+      <h3>{{ receta.strMeal }}</h3>
+      <button class="btn-ver" (click)="verDetalle(receta.idMeal)">Ver Receta</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="recetas.length === 0 && ingrediente && consejo" class="sin-resultados fade-in">
+  <p>No se encontraron recetas con "{{ ingrediente }}". ¡Intenta con otro!</p>
+</div>
+
+<div class="modal-overlay" *ngIf="recetaSeleccionada">
+  <div class="modal-content fade-in">
+    <button class="btn-cerrar-icon" (click)="cerrarDetalle()">✖</button>
+    <h2>{{ recetaSeleccionada.strMeal }}</h2>
+    <img [src]="recetaSeleccionada.strMealThumb" [alt]="recetaSeleccionada.strMeal" />
+
+    <div class="modal-body">
+      <h3>Pasos a seguir:</h3>
+      <p class="instrucciones">{{ recetaSeleccionada.strInstructions }}</p>
+    </div>
+
+    <button (click)="cerrarDetalle()" class="btn-cerrar">Cerrar</button>
+  </div>
+</div>

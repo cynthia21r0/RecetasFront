@@ -1,0 +1,65 @@
+<div class="form-wrapper fade-in">
+  <div class="form-card">
+    <div class="form-header">
+      <h2>{{ esEdicion ? '✏️ Editar Receta' : '✨ Crear Nueva Receta' }}</h2>
+      <p>
+        {{
+          esEdicion
+            ? 'Modifica los detalles de tu platillo'
+            : 'Añade tu propia magia culinaria a la colección'
+        }}
+      </p>
+    </div>
+
+    <form (ngSubmit)="guardar()">
+      <div class="input-group">
+        <label>Nombre del Plato</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.nombre"
+          name="nombre"
+          placeholder="Ej. Tacos al Pastor"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label>Breve Descripción</label>
+        <input
+          type="text"
+          [(ngModel)]="receta.descripcion"
+          name="descripcion"
+          placeholder="¿Qué hace especial a este platillo?"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <label>Ingredientes (Separados por comas)</label>
+        <textarea
+          [(ngModel)]="receta.ingredientes"
+          name="ingredientes"
+          rows="3"
+          placeholder="Ej. 1kg de carne, tortillas, piña..."
+        ></textarea>
+      </div>
+
+      <div class="input-group">
+        <label>Instrucciones paso a paso</label>
+        <textarea
+          [(ngModel)]="receta.instrucciones"
+          name="instrucciones"
+          rows="5"
+          placeholder="1. Preparar la carne..."
+        ></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-cancel" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn-save">
+          {{ esEdicion ? 'Actualizar Cambios' : 'Guardar Receta' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
