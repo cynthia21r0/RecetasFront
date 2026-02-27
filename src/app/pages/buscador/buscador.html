@@ -1,15 +1,23 @@
 <div class="hero-search">
   <h2>Descubre Recetas del Mundo 🌎</h2>
-  <p>Busca ingredientes en inglés y encuentra tu próxima comida favorita</p>
+  <p>Escribe tu ingrediente favorito y nosotros nos encargamos del resto</p>
 
   <div class="search-box">
     <input
       type="text"
       [(ngModel)]="ingrediente"
       (keyup.enter)="buscar()"
-      placeholder="Ej. chicken, avocado, beef..."
+      placeholder="Ej. pollo, aguacate, limón, carne..."
     />
     <button (click)="buscar()">🔍 Buscar</button>
+  </div>
+</div>
+
+<div *ngIf="definicionDiccionario" class="consejo fade-in" style="border-left-color: #3498db;">
+  <div class="consejo-icon">📚</div>
+  <div class="consejo-text">
+    <strong>¿Qué es "{{ palabraBuscada }}"?</strong>
+    <p style="font-style: italic;">"{{ definicionDiccionario }}"</p>
   </div>
 </div>
 
@@ -21,20 +29,46 @@
   </div>
 </div>
 
-<div class="grid" *ngIf="recetas.length > 0">
-  <div class="card fade-in" *ngFor="let receta of recetas">
-    <div class="img-container">
-      <img [src]="receta.strMealThumb" [alt]="receta.strMeal" />
-    </div>
-    <div class="card-content">
-      <h3>{{ receta.strMeal }}</h3>
-      <button class="btn-ver" (click)="verDetalle(receta.idMeal)">Ver Receta</button>
+<div *ngIf="bebidas.length > 0" class="fade-in" style="margin-bottom: 40px;">
+  <h3 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; display: inline-block;">
+    🍹 Bebidas con "{{ palabraBuscada }}"
+  </h3>
+  <div class="grid">
+    <div class="card fade-in" *ngFor="let bebida of bebidas" style="border-top: 4px solid #3498db;">
+      <div class="img-container">
+        <img [src]="bebida.strDrinkThumb" [alt]="bebida.strDrink" />
+      </div>
+      <div class="card-content">
+        <h3>{{ bebida.strDrink }}</h3>
+
+        <button class="btn-ver" style="background: #3498db; margin-top: 10px;" (click)="verDetalleBebida(bebida)">
+          Ver Preparación
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="recetas.length === 0 && ingrediente && consejo" class="sin-resultados fade-in">
-  <p>No se encontraron recetas con "{{ ingrediente }}". ¡Intenta con otro!</p>
+<div *ngIf="recetas.length > 0" class="fade-in">
+  <h3 style="color: #2c3e50; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; display: inline-block;">
+    🍲 Comidas con "{{ palabraBuscada }}"
+  </h3>
+  <div class="grid">
+    <div class="card fade-in" *ngFor="let receta of recetas" style="border-top: 4px solid #e74c3c;">
+      <div class="img-container">
+        <img [src]="receta.strMealThumb" [alt]="receta.strMeal" />
+      </div>
+      <div class="card-content">
+        <h3>{{ receta.strMeal }}</h3>
+
+        <button class="btn-ver" (click)="verDetalle(receta.idMeal)">Ver Receta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="recetas.length === 0 && bebidas.length === 0 && palabraBuscada" class="sin-resultados fade-in">
+  <p>No encontramos nada con "{{ palabraBuscada }}". ¡Intenta con otro ingrediente!</p>
 </div>
 
 <div class="modal-overlay" *ngIf="recetaSeleccionada">
@@ -45,7 +79,7 @@
 
     <div class="modal-body">
       <h3>Pasos a seguir:</h3>
-      <p class="instrucciones">{{ recetaSeleccionada.strInstructions }}</p>
+      <p class="instrucciones">{{ recetaSeleccionada.instruccionesTraducidas }}</p>
     </div>
 
     <button (click)="cerrarDetalle()" class="btn-cerrar">Cerrar</button>
